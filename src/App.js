@@ -59,7 +59,7 @@ function App() {
     setDisplayAnswer(false);
     }
   };
-
+console.log(questions)
   return (
     <div className="revision">
       {displayStart ? (
