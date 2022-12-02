@@ -8,7 +8,7 @@ function App() {
   const [displayStart, setDisplayStart] = useState(true);
   const [numberOfQuestions, setNumberOfQuestions] = useState(1);
   const [numberOfGoodAnswers, setNumberOfGoodAnswers] = useState(0);
-  const [title, setTitle] = useState("Prêt à révisier pour avoir ton TP?");
+  const [title, setTitle] = useState("Prêt à réviser pour ton TP?");
   let [x, setX] = useState(0);
 
   useEffect(() => {
@@ -35,7 +35,6 @@ function App() {
     setNumberOfQuestions(numberOfQuestions + 1);
     setNumberOfGoodAnswers(numberOfGoodAnswers+1)
     if (x == questions.length-2){
-
       setTitle("Tu as fait toutes les questions, réactualises pour recommencer");
       setDisplayAnswer(false);
       setDisplayQuestion(false);
@@ -50,21 +49,16 @@ function App() {
     setX(x+1);
     setNumberOfQuestions(numberOfQuestions + 1);
     if (x == questions.length-2){
-    
       setTitle("Tu as fait toutes les questions, réactualises pour recommencer");
       setDisplayAnswer(false);
       setDisplayQuestion(false);
       setDisplayStart(true);
     }
     else{
-
     setDisplayQuestion(true);
     setDisplayAnswer(false);
     }
   };
-
-console.log(displayAnswer);
-console.log(displayQuestion)
 
   return (
     <div className="revision">
