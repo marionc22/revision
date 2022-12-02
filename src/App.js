@@ -54,7 +54,7 @@ function App() {
     setX(x+1);
     setNumberOfQuestions(numberOfQuestions + 1);
     if (x === questions.length-2){
-      setTitle("Tu as fait toutes les questions, réactualises pour recommencer");
+      setTitle("Tu as fait toutes les questions, tu peux recommencer");
       setDisplayAnswer(false);
       setDisplayQuestion(false);
       setDisplayStart(true);
