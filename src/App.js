@@ -19,6 +19,7 @@ function App() {
       }
     }
     shuffleArray(questions);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [questions]);
 
   const startGame = () => {
