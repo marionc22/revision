@@ -59,8 +59,8 @@ function App() {
         <div>
           {" "}
           <p className="title">{questions[x].answer}</p>{" "}
-          <button onClick={newQuestionGood}>Bonne réponse</button>{" "}
-          <button onClick={newQuestionBad}>Mauvaise réponse</button>{" "}
+          <button onClick={newQuestionGood}>J'ai bien répondu</button>{" "}
+          <button onClick={newQuestionBad}>J'ai mal répondu</button>{" "}
         </div>
       ) : null}
       {displayStart? null : <p>Score : {numberOfGoodAnswers} / {numberOfQuestions-1}</p>}
