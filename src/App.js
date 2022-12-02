@@ -24,6 +24,10 @@ function App() {
   const startGame = () => {
     setDisplayStart(false);
     setDisplayQuestion(true);
+    setX(0)
+    setNumberOfQuestions(1)
+    setNumberOfGoodAnswers(0)
+
   };
 
   const giveAnswer = () => {
@@ -34,8 +38,8 @@ function App() {
     setX(x+1);
     setNumberOfQuestions(numberOfQuestions + 1);
     setNumberOfGoodAnswers(numberOfGoodAnswers+1)
-    if (x == questions.length-2){
-      setTitle("Tu as fait toutes les questions, réactualises pour recommencer");
+    if (x === questions.length-2){
+      setTitle("Tu as fait toutes les questions, tu peux recommencer");
       setDisplayAnswer(false);
       setDisplayQuestion(false);
       setDisplayStart(true);
@@ -48,7 +52,7 @@ function App() {
   const newQuestionBad = () => {
     setX(x+1);
     setNumberOfQuestions(numberOfQuestions + 1);
-    if (x == questions.length-2){
+    if (x === questions.length-2){
       setTitle("Tu as fait toutes les questions, réactualises pour recommencer");
       setDisplayAnswer(false);
       setDisplayQuestion(false);
