@@ -8,7 +8,7 @@ function App() {
   const [displayStart, setDisplayStart] = useState(true);
   const [numberOfQuestions, setNumberOfQuestions] = useState(1);
   const [numberOfGoodAnswers, setNumberOfGoodAnswers] = useState(0);
-  let [x, setX] = useState(Math.floor(Math.random() * 5));
+  let [x, setX] = useState(Math.floor(Math.random() * questions.length));
   console.log(x);
   const startGame = () => {
     setDisplayStart(false);
@@ -20,7 +20,7 @@ function App() {
     setDisplayAnswer(true);
   };
   const newQuestionGood = () => {
-    setX(Math.floor(Math.random() * 5));
+    setX(Math.floor(Math.random() * questions.length));
     setNumberOfQuestions(numberOfQuestions + 1);
     setDisplayQuestion(true);
     setDisplayAnswer(false);
