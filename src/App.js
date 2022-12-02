@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import questions from "./question";
 import "./App.css";
 
@@ -8,8 +8,19 @@ function App() {
   const [displayStart, setDisplayStart] = useState(true);
   const [numberOfQuestions, setNumberOfQuestions] = useState(1);
   const [numberOfGoodAnswers, setNumberOfGoodAnswers] = useState(0);
-  let [x, setX] = useState(Math.floor(Math.random() * questions.length));
-  console.log(x);
+  const [title, setTitle] = useState("Prêt à révisier pour avoir ton TP?");
+  let [x, setX] = useState(0);
+
+  useEffect(() => {
+    function shuffleArray(array) {
+      for (let i = array.length - 2; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+    shuffleArray(questions);
+  }, [questions]);
+
   const startGame = () => {
     setDisplayStart(false);
     setDisplayQuestion(true);
@@ -20,26 +31,47 @@ function App() {
     setDisplayAnswer(true);
   };
   const newQuestionGood = () => {
-    setX(Math.floor(Math.random() * questions.length));
+    setX(x+1);
     setNumberOfQuestions(numberOfQuestions + 1);
+    setNumberOfGoodAnswers(numberOfGoodAnswers+1)
+    if (x == questions.length-2){
+
+      setTitle("Tu as fait toutes les questions, réactualises pour recommencer");
+      setDisplayAnswer(false);
+      setDisplayQuestion(false);
+      setDisplayStart(true);
+    }
+    else{
     setDisplayQuestion(true);
     setDisplayAnswer(false);
-    setNumberOfGoodAnswers(numberOfGoodAnswers+1)
+    }
   };
   const newQuestionBad = () => {
-    setX(Math.floor(Math.random() * 5));
+    setX(x+1);
     setNumberOfQuestions(numberOfQuestions + 1);
+    if (x == questions.length-2){
+    
+      setTitle("Tu as fait toutes les questions, réactualises pour recommencer");
+      setDisplayAnswer(false);
+      setDisplayQuestion(false);
+      setDisplayStart(true);
+    }
+    else{
+
     setDisplayQuestion(true);
     setDisplayAnswer(false);
-
+    }
   };
+
+console.log(displayAnswer);
+console.log(displayQuestion)
 
   return (
     <div className="revision">
       {displayStart ? (
         <div>
           {" "}
-          <p className="title"> Prêt à révisier pour avoir ton TP?</p>
+          <p className="title"> {title}</p>
           <button
            onClick={startGame}>C'est parti ! </button>
         </div>
@@ -63,7 +95,7 @@ function App() {
           <button onClick={newQuestionBad}>J'ai mal répondu</button>{" "}
         </div>
       ) : null}
-      {displayStart? null : <p>Score : {numberOfGoodAnswers} / {numberOfQuestions-1}</p>}
+       <p>Score : {numberOfGoodAnswers} / {numberOfQuestions-1}</p>
     </div>
   );
 }
